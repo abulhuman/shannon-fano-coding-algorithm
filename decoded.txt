@@ -1,0 +1,15 @@
+In the field of data compression, Shannon-Fano coding is a technique for constructing a prefix code based on a set of symbols and their probabilities
+(estimated or measured). It is suboptimal in the sense that it does not achieve the lowest possible expected code word length like Huffman coding; however
+unlike Huffman coding, it does guarantee that all code word lengths are within one bit of their theoretical ideal = [-log{P(x)}]. The technique was proposed in
+Claude Elwood Shannon's "A Mathematical Theory of Communication", his 1948 article introducing the field of information theory. The method was attributed
+to Robert Fano, who later published it as a technical report.[1] Shannon-Fano coding should not be confused with Shannon coding, the coding method used to
+prove Shannon's noiseless coding theorem, or with Shannon-Fano-Elias coding (also known as Elias coding), the precursor to arithmetic coding.
+
+Neither Shannon–Fano algorithm is guaranteed to generate an optimal code. For this reason, Shannon–Fano codes are almost never used; Huffman coding is almost as computationally
+simple and produces prefix codes that always achieve the lowest possible expected code word length, under the constraints that each symbol is represented by a code formed of an
+integral number of bits. This is a constraint that is often unneeded, since the codes will be packed end-to-end in long sequences. If we consider groups of codes at a time,
+symbol-by-symbol Huffman coding is only optimal if the probabilities of the symbols are independent and are some power of a half, 
+i.e., {1/2^(k)}. 
+In most situations, arithmetic coding can produce greater overall compression than either Huffman or Shannon–Fano, since it can encode
+in fractional numbers of bits which more closely approximate the actual information content of the symbol. However, arithmetic coding 
+has not superseded Huffman the way that Huffman supersedes Shannon-Fano, both because arithmetic coding is more computationally expensive and because it is covered by multiple patents.[11]
