@@ -1,15 +1,25 @@
-/*
- *  Shannon-Fano coding algorithm
- *  by Sergey Tikhonov (st@haqu.net)
+/**
+ *  Shannon-Fano coding algorithm for 2022 AASTU Multimedia Course
+ *   Usage: shannon [-d] input [output]
+ *   The default action is to encode input file.
+ *   -d    Decode file.
  *
- *  Usage: shannon [OPTIONS] input [output]
- *    The default action is to encode input file.
- *    -d  Decode file.
+ *   Examples:
+ *   shannon input.txt
+ *   shannon input.txt encoded.txt
+ *   shannon -d encoded.txt
  *
- *  Examples:
- *    shannon input.txt
- *    shannon input.txt encoded.txt
- *    shannon -d encoded.txt
+ *   Group Members:
+ *                   1. Abdellah Hussein     ETS0006/11
+ *                   2. Abel Endeshaw        ETS0029/11
+ *                   3. Abigya Getachew      ETS0050/11
+ *                   4. Adem Mohammed        ETS0080/11
+ *                   5. Andualem Beguno      ETS0125/11
+ *                   6. Betel Dessalegn      ETS0189/11
+ *                   7. Jerusalem Asres      ETS0539/09
+ *
+ *   Submitted to Mr. Eyob Samuel
+ *
  */
 
 #ifdef _WIN32
@@ -99,19 +109,28 @@ public:
 
         //  Outputing ptable and codes
         //
-        printf("%i" NL, tsize);
-        fprintf(outputFile, "%i" NL, tsize);
+        printf("Total number of unique characters in the file: %i" NL, tsize);
+        printf(NL "Character {x}\tProbability(x)\t\tEncoded Value(x)");
+        printf(NL "_________________________________________________________" NL);
+
+        fprintf(outputFile, "Total number of unique characters in the file: %i" NL, tsize);
+        fprintf(outputFile, NL "Character {x}\tProbability(x)\t\tEncoded Value(x)");
+        fprintf(outputFile, NL "_________________________________________________________" NL);
+
+        // fprintf(outputFile, "%i" NL, tsize);
         for (i = 0; i < tsize; i++)
         {
-            printf("%c\t%f\t%s" NL, ptable[i].ch, ptable[i].p, codes[ptable[i].ch].c_str());
-            fprintf(outputFile, "%c\t%f\t%s" NL, ptable[i].ch, ptable[i].p, codes[ptable[i].ch].c_str());
+            printf("%c\t\t%f\t\t%s" NL, ptable[i].ch, ptable[i].p, codes[ptable[i].ch].c_str());
+            fprintf(outputFile, "%c\t\t%f\t\t%s" NL, ptable[i].ch, ptable[i].p, codes[ptable[i].ch].c_str());
         }
 
         //  Outputing encoded text
         //
         fseek(inputFile, SEEK_SET, 0);
         printf(NL);
-        fprintf(outputFile, NL);
+        printf(NL "Encoded Text (also found in encoded.txt): " NL NL);
+        fprintf(outputFile, NL "Encoded Text (also found in encoded.txt): " NL NL);
+        // fprintf(outputFile, NL);
         while (fscanf(inputFile, "%c", &ch) != EOF)
         {
             printf("%s", codes[ch].c_str());
